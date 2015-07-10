@@ -132,3 +132,7 @@
 (load "setup-js.el")
 
 (setq magit-auto-revert-mode nil)
+
+;; download adobe's source code pro font otf file
+;; save those otf files to /usr/share/fonts/opentype/
+(set-frame-font "Source Code Pro" nil t)
