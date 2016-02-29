@@ -137,6 +137,7 @@
 ;; Langauage-specific
 (load "setup-clojure.el")
 (load "setup-js.el")
+(load "setup-ruby.el")
 
 (setq magit-auto-revert-mode nil)
 
@@ -157,8 +158,24 @@
  ;; If there is more than one, they won't work right.
  )
 
+;; auto-complete setup
+(require 'auto-complete-config)
+(setq-default ac-sources
+               '(ac-source-abbrev ac-source-dictionary
+                                  ac-source-words-in-same-mode-buffers))
+(ac-config-default)
+(require 'ac-cider)
+(add-hook 'cider-mode-hook 'ac-flyspell-workaround)
+(add-hook 'cider-mode-hook 'ac-cider-setup)
+(add-hook 'cider-repl-mode-hook 'ac-cider-setup)
+(eval-after-load "auto-complete"
+  '(progn
+     (add-to-list 'ac-modes 'cider-mode)
+     (add-to-list 'ac-modes 'cider-repl-mode)
+     (add-to-list 'ac-modes 'enh-ruby-mode)))
+
 (require 'org)
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
-(setq org-agenda-files (list "~/workspace/bitbucket/org/work.org" "~/workspace/bitbucket/org/personal.org"))
+(setq org-agenda-files (list "~/workspace/bitbucket/org/work.org" "~/workspace/bitbucket/org/tech.org"))
