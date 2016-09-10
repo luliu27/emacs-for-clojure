@@ -138,6 +138,7 @@
 (load "setup-clojure.el")
 (load "setup-js.el")
 (load "setup-ruby.el")
+(load "setup-haskell.el")
 
 (setq magit-auto-revert-mode nil)
 
@@ -150,6 +151,13 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(coffee-tab-width 2)
+ '(package-archives
+   (quote
+    (("gnu" . "http://elpa.gnu.org/packages/")
+     ("marmalade" . "http://marmalade-repo.org/packages/")
+     ("tromey" . "http://tromey.com/elpa/")
+     ("melpa" . "https://melpa.org/packages")
+     ("melpa-stable" . "http://stable.melpa.org/packages/"))))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
